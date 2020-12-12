@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 from debug_toolbar.panels import Panel
 from debug_toolbar.utils import ThreadCollector
@@ -56,6 +57,7 @@ class ElasticDebugPanel(Panel):
 
     name = "Elasticsearch"
     template = "elastic_panel/elastic_panel.html"
+    scripts = [static("elastic_panel/js/elastic_panel.js")]
     has_content = True
     total_time = 0
     nb_duplicates = 0
